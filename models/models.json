@@ -1,0 +1,28 @@
+[
+    {
+        "Model": "MaskDINO-R50-160k",
+        "Dataset": "ADE20K",
+        "mIoU": 48.7,
+        "meta": {
+            "task_type": "semantic segmentation",
+            "model_name": "MaskDINO-R50-160k",
+            "model_files": {
+                "checkpoint": "/weights/maskdino_semantic_ade20k.pth",
+                "config": "configs/ade20k/semantic-segmentation/maskdino_R50_bs16_160k_steplr.yaml"
+            }
+        }
+    },
+    {
+        "Model": "MaskDINO-R50-90k",
+        "Dataset": "Cityscapes",
+        "mIoU": 79.8,
+        "meta": {
+            "task_type": "semantic segmentation",
+            "model_name": "MaskDINO-R50-90k",
+            "model_files": {
+                "checkpoint": "/weights/maskdino_semantic_cityscapes.pth",
+                "config": "configs/cityscapes/semantic-segmentation/maskdino_R50_bs16_90k_steplr.yaml"
+            }
+        }
+    }
+]

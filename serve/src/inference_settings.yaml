@@ -1,0 +1,4 @@
+# whether to resize the prediction back
+# to original input size before semantic 
+# segmentation inference or after
+postprocess_before_inference: false

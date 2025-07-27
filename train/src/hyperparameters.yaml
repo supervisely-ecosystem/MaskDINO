@@ -1,0 +1,17 @@
+n_iterations: 5000 # equivalent to cfg.SOLVER.MAX_ITER in detectron2
+
+batch_size: 16 # equivalent to cfg.SOLVER.IMS_PER_BATCH in detectron2
+
+base_lr: 0.00025 # equivalent to cfg.SOLVER.BASE_LR in detectron2
+
+lr_decay_frequency: 1000 # equivalent to cfg.SOLVER.STEPS in detectron2
+
+lr_decay_factor: 0.1 # equivalent to cfg.SOLVER.GAMMA in detectron2
+
+optimizer: AdamW # equivalent to cfg.SOLVER.OPTIMIZER in detectron2
+
+n_workers: 2 # equivalent to cfg.DATALOADER.NUM_WORKERS in detectron2
+
+checkpoint_save_frequency: 1000 # equivalent to cfg.SOLVER.CHECKPOINT_PERIOD in detectron2
+
+evaluation_frequency: 1000 # equivalent to cfg.TEST.EVAL_PERIOD in detectron2
