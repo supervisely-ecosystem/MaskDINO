@@ -14,6 +14,9 @@
     "session_tags": [
         "deployed_nn"
     ],
+    "icon": "https://github.com/supervisely-ecosystem/MaskDINO/releases/download/v0.0.1/icon_maskdino-serve2.jpg",
+    "icon_cover": true,
+    "poster": "https://github.com/supervisely-ecosystem/MaskDINO/releases/download/v0.0.1/poster-maskdino-serve.jpg",
     "community_agent": false,
     "docker_image": "supervisely/maskdino:1.0.0",
     "instance_version": "6.14.0",

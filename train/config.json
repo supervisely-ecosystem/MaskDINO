@@ -16,6 +16,9 @@
     "task_location": "workspace_tasks",
     "need_gpu": true,
     "gpu": "required",
+    "icon": "https://github.com/supervisely-ecosystem/MaskDINO/releases/download/v0.0.1/icon_maskdino-train2.jpg",
+    "icon_cover": true,
+    "poster": "https://github.com/supervisely-ecosystem/MaskDINO/releases/download/v0.0.1/poster-maskdino-train.jpg",
     "isolate": true,
     "community_agent": false,
     "license": {

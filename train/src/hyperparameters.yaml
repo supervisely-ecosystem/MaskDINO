@@ -1,6 +1,6 @@
 n_iterations: 5000 # equivalent to cfg.SOLVER.MAX_ITER in detectron2
 
-batch_size: 16 # equivalent to cfg.SOLVER.IMS_PER_BATCH in detectron2
+batch_size: 2 # equivalent to cfg.SOLVER.IMS_PER_BATCH in detectron2
 
 base_lr: 0.00025 # equivalent to cfg.SOLVER.BASE_LR in detectron2
 
