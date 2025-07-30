@@ -1,3 +1,4 @@
+print("Installing MultiScaleAttention...")
 import subprocess
 import sys
 
