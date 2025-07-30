@@ -1,3 +1,8 @@
+import subprocess
+import sys
+
+subprocess.run(["sh", "install_multiscale_attn.sh"])
+subprocess.run([sys.executable, "-m", "pip", "install", "Pillow==10.1.0"], check=True)
 from train.src.custom_train_app import CustomTrainApp
 from dotenv import load_dotenv
 from train.src.data_converter import configure_datasets
