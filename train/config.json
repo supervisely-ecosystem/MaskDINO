@@ -32,17 +32,12 @@
     },
     "framework": {
         "name": "MaskDINO",
+        "tags": [],
+        "export": [],
         "conference": "CVPR 2023",
-        "released": 2023,
-        "tasks": {
-            "semantic_segmentation": {
-                "metric": 79.8,
-                "models": 2
-            }
-        },
-        "real_time": true,
-        "onnx": false,
-        "tensorrt": false
+        "released": "2023",
+        "description": "MaskDINO extends DINO (DETR with Improved Denoising Anchor Boxes) by adding a mask prediction branch. It makes use of the query embeddings from DINO to dotproduct a high-resolution pixel embedding map to predict a set of binary masks. MaskDINO is simple, efficient and scalable.",
+        "github": "https://github.com/IDEA-Research/MaskDINO"
     },
     "files": {
         "models": "models/models.json",
