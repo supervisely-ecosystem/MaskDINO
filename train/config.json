@@ -36,7 +36,7 @@
         "export": [],
         "conference": "CVPR 2023",
         "released": "2023",
-        "description": "MaskDINO extends DINO (DETR with Improved Denoising Anchor Boxes) by adding a mask prediction branch. It makes use of the query embeddings from DINO to dotproduct a high-resolution pixel embedding map to predict a set of binary masks. MaskDINO is simple, efficient and scalable.",
+        "description": "MaskDINO extends DINO for segmentation tasks, enabling the generation of high-quality segmentation masks. It achieves state-of-the-art results in various benchmarks.",
         "github": "https://github.com/IDEA-Research/MaskDINO"
     },
     "files": {
