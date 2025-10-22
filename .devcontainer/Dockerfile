@@ -25,9 +25,9 @@ RUN python3 -m pip install 'git+https://github.com/facebookresearch/detectron2.g
 
 RUN pip3 install Pillow==9.5.0
 RUN pip3 install timm==1.0.16
-RUN python3 -m pip install --no-cache-dir supervisely==6.73.404
-RUN pip3 install supervisely[model-benchmark]==6.73.404
-RUN pip3 install supervisely[training]==6.73.404
+RUN python3 -m pip install --no-cache-dir supervisely==6.73.457
+RUN pip3 install supervisely[model-benchmark]==6.73.457
+RUN pip3 install supervisely[training]==6.73.457
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
