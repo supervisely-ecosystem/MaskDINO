@@ -49,11 +49,15 @@ def start_training():
     output_dir = "./train_output"
     train.start_tensorboard(output_dir)
     trainer.train()
-    # save class names to checkpoint
-    best_checkpoint_path = os.path.join(output_dir, "model_final.pth")
-    best_checkpoint_dict = torch.load(best_checkpoint_path)
-    best_checkpoint_dict["class_names"] = train.classes
-    torch.save(best_checkpoint_dict, best_checkpoint_path)
+    # save class names to checkpoints
+    checkpoint_names = [
+        file for file in os.listdir(output_dir) if file.endswith(".pth")
+    ]
+    for checkpoint_name in checkpoint_names:
+        checkpoint_path = os.path.join(output_dir, checkpoint_name)
+        checkpoint_dict = torch.load(checkpoint_path)
+        checkpoint_dict["class_names"] = train.classes
+        torch.save(checkpoint_dict, checkpoint_path)
     # generate experiment info
     config_path = os.path.join(output_dir, "training_config.yaml")
     experiment_info = {
