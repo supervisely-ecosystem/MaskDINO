@@ -55,4 +55,4 @@ RUN pip3 install .
 
 ENV PYTHONPATH=/MaskDINO
 
-LABEL "role"="development"
+LABEL python_sdk_version="6.73.553"

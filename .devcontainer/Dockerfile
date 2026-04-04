@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
-RUN pip3 install --no-cache-dir torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+RUN pip3 install --no-cache-dir torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
 RUN pip3 install --no-cache-dir packaging==22.0
 
 RUN pip3 install --no-cache-dir setuptools==69.5.1
