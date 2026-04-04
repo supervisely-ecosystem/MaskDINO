@@ -116,8 +116,8 @@ class MSDeformAttn(nn.Module):
         try:
             output = MSDeformAttnFunction.apply(
                 value, input_spatial_shapes, input_level_start_index, sampling_locations, attention_weights, self.im2col_step)
-        except:
-            # CPU
+        except Exception as e:
+            warnings.warn(f"MSDeformAttn CUDA forward failed: {e}. Falling back to PyTorch implementation.")
             output = ms_deform_attn_core_pytorch(value, input_spatial_shapes, sampling_locations, attention_weights)
         # # For FLOPs calculation only
         # output = ms_deform_attn_core_pytorch(value, input_spatial_shapes, sampling_locations, attention_weights)

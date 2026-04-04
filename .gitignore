@@ -54,3 +54,5 @@ local.env
 
 train_data/
 train_output/
+
+CLAUDE.md

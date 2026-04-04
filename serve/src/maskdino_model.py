@@ -17,6 +17,18 @@ from detectron2.modeling.postprocessing import sem_seg_postprocess
 from detectron2.utils.memory import retry_if_cuda_oom
 
 
+# Ensure consistent behavior across GPU architectures (e.g. 4090 vs 5090)
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+# Force SDPA to use the math backend for cross-architecture reproducibility.
+# FlashAttention/memory-efficient backends select different kernels per GPU arch,
+# causing numerical differences in nn.MultiheadAttention (used in 9 decoder layers).
+torch.backends.cuda.enable_flash_sdp(False)
+torch.backends.cuda.enable_mem_efficient_sdp(False)
+
+
 class MaskDinoModel(sly.nn.inference.SemanticSegmentation):
     FRAMEWORK_NAME = "MaskDINO"
     MODELS = "models/models.json"
@@ -38,8 +50,6 @@ class MaskDinoModel(sly.nn.inference.SemanticSegmentation):
         self.cfg.merge_from_file(config_path)
 
         checkpoint_path = model_files["checkpoint"]
-        # if sly.is_development():
-        #     checkpoint_path = "." + checkpoint_path
         self.cfg.MODEL.WEIGHTS = checkpoint_path
         self.cfg.MODEL.DEVICE = device
         self.device = device
