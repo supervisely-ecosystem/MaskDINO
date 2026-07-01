@@ -375,16 +375,29 @@ class Trainer(DefaultTrainer):
         return hooks
 
 
+def get_required_model_file(train, name):
+    model_info = train.model_info or {}
+    meta = model_info.get("meta") or {}
+    model_files = meta.get("model_files") or model_info.get("model_files") or {}
+    file_path = model_files.get(name)
+    if not file_path:
+        raise ValueError(
+            f"Selected model is incompatible with Train MaskDINO: "
+            f"missing '{name}' in model_files."
+        )
+    return file_path
+
+
 def configure_trainer(train):
     # basic setup
     cfg = get_cfg()
     add_deeplab_config(cfg)
     add_maskdino_config(cfg)
-    config_path = train.model_info["meta"]["model_files"]["config"]
+    config_path = get_required_model_file(train, "config")
     cfg.merge_from_file(config_path)
 
     # weights path
-    checkpoint_path = train.model_info["meta"]["model_files"]["checkpoint"]
+    checkpoint_path = get_required_model_file(train, "checkpoint")
     if sly.is_development():
         checkpoint_path = "." + checkpoint_path
     cfg.MODEL.WEIGHTS = checkpoint_path

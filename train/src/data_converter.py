@@ -7,6 +7,17 @@ from pathlib import Path
 from PIL import Image
 
 
+TRAIN_DATASET_NAME = "main_train"
+VALIDATION_DATASET_NAME = "main_validation"
+
+
+def reset_detectron_dataset(name):
+    if name in DatasetCatalog:
+        DatasetCatalog.remove(name)
+    if name in MetadataCatalog:
+        MetadataCatalog.remove(name)
+
+
 def string2number(s):
     return int.from_bytes(s.encode(), "little")
 
@@ -67,11 +78,14 @@ def configure_datasets(train):
         convert_data_to_detectron, val_ds, project_meta, val_seg_path, train.classes
     )
 
-    DatasetCatalog.register("main_train", get_train)
-    DatasetCatalog.register("main_validation", get_validation)
+    reset_detectron_dataset(TRAIN_DATASET_NAME)
+    reset_detectron_dataset(VALIDATION_DATASET_NAME)
 
-    MetadataCatalog.get("main_train").stuff_classes = train.classes
-    MetadataCatalog.get("main_train").ignore_label = 255
-    MetadataCatalog.get("main_validation").stuff_classes = train.classes
-    MetadataCatalog.get("main_validation").ignore_label = 255
-    MetadataCatalog.get("main_validation").evaluator_type = "sem_seg"
+    DatasetCatalog.register(TRAIN_DATASET_NAME, get_train)
+    DatasetCatalog.register(VALIDATION_DATASET_NAME, get_validation)
+
+    MetadataCatalog.get(TRAIN_DATASET_NAME).stuff_classes = train.classes
+    MetadataCatalog.get(TRAIN_DATASET_NAME).ignore_label = 255
+    MetadataCatalog.get(VALIDATION_DATASET_NAME).stuff_classes = train.classes
+    MetadataCatalog.get(VALIDATION_DATASET_NAME).ignore_label = 255
+    MetadataCatalog.get(VALIDATION_DATASET_NAME).evaluator_type = "sem_seg"
